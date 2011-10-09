@@ -4,3 +4,4 @@ log/*.log
 tmp/
 app/**/*.swp
 config/mail.yml
+public/**/*.swp

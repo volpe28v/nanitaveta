@@ -2,7 +2,7 @@ Nanitaveta::Application.routes.draw do
   root :to => "users#index"
 
   devise_for :users
-  get 'users', :to => 'users#index', :as => :user_root  
+  get 'users', :to => 'users#index', :as => :user_root
 
   resources :users
 
