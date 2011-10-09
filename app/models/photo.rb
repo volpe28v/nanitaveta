@@ -23,6 +23,8 @@ class Photo < ActiveRecord::Base
     photo = Photo.new
     photo.user_id  = user.id
     photo.path = photo_name
+    photo.date = email.date
+    photo.message = email.body.split("\r\n")[0].toutf8
     photo.save
   end
 

@@ -20,6 +20,7 @@ class MailAttachedHandler < ActiveRecord::Base
       p email.from[0]
       p email.date
       p email.subject.toutf8
+      p email.body.split("\r\n")[0].toutf8
 
       Photo.save_image(email)
 #      imap.store(uid,"+FLAGS",[:Seen])    #make read

@@ -1,8 +1,19 @@
 <h1><%= @user.email %></h1>
 
-<% @user.photos.each do |p| %>
-<span>
-  <%= image_tag ("/photos/" + p.path, :width=>"100") %>
-</span>
+<% latest_date = nil %>
+<% @user.photos.order("date DESC").each do |p| %>
+  <% current_date = p.date.strftime("%Y/%m/%d") %>
+  <% if latest_date == nil %>
+    <% latest_date = current_date %>
+    <h2><%= current_date %></h2><table><tr>
+  <% elsif latest_date != current_date %>
+    <% latest_date = current_date %>
+    </tr></table><h2><%= current_date %></h2><table><tr>
+  <% end %>
+  <td valign="top" width="150px">
+    <%= p.date.strftime("%H:%M") %><br>
+    <%= image_tag ("/photos/" + p.path, :width=>"100") %><br>
+    <%= p.message %>
+  </td>
 <% end %>
-
+</tr></table>
