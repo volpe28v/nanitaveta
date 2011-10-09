@@ -7,6 +7,18 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 gem 'tmail'
+gem 'devise'
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'growl'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'rcov'
+  gem 'ci_reporter'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
