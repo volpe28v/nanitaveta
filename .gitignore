@@ -2,6 +2,6 @@
 db/*.sqlite3
 log/*.log
 tmp/
-app/**/*.swp
+*.swp
 config/mail.yml
-public/**/*.swp
+public/photos/*

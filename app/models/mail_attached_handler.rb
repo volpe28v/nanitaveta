@@ -4,31 +4,27 @@ class MailAttachedHandler < ActiveRecord::Base
 
   def self.download_imap
     config = YAML.load(File.read(File.join(Rails.root, 'config', 'mail.yml')))    
-    p config
 
     # GmailにIMAPで接続、ログインする
+    p "try login to gmail"
     imap = Net::IMAP.new(config['host'],config['port'],true,nil,false)
     imap.login(config['username'],config['password']) # ID、パスワード
-    p "IMAP LOGIN"
+    p "login ok!"
 
     # 受信箱を開く
     imap.select('INBOX')
-    p 'IMAP SELECT INDEX'
-    imap.uid_search(["SEEN"]).each do |uid| # 未読を対象
+    imap.uid_search(["UNSEEN"]).each do |uid| # 未読を対象
       email = TMail::Mail.parse(imap.uid_fetch(uid,'RFC822').first.attr['RFC822'])
-      p email.to[0]
-      p email.from[0]
-      p email.date
-      p email.subject.toutf8
-      p email.body.split("\r\n")[0].toutf8
+      p "got email from: " + email.from[0]
 
       Photo.save_image(email)
-#      imap.store(uid,"+FLAGS",[:Seen])    #make read
-      #imap.store(uid,'+FLAGS',[:Deleted]) #delete mail  
-#      imap.expunge # :Deleted フラグを確定する
+      imap.store(uid,"+FLAGS",[:Seen])    #make read
+      #imap.store(uid,'+FLAGS',[:Deleted]) #delete mail
+      imap.expunge # :Deleted フラグを確定する
     end
     # 切断する
     imap.logout
-    p "IMAP LOGOUT"
+
+    p "all email downloaded!"
   end
 end
