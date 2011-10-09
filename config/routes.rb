@@ -1,5 +1,10 @@
 Nanitaveta::Application.routes.draw do
+  root :to => "users#index"
+
   devise_for :users
+  get 'users', :to => 'users#index', :as => :user_root  
+
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

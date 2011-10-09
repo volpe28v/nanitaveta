@@ -1,0 +1,8 @@
+<h1><%= @user.email %></h1>
+
+<% @user.photos.each do |p| %>
+<span>
+  <%= image_tag ("/photos/" + p.path, :width=>"100") %>
+</span>
+<% end %>
+

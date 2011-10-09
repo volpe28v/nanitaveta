@@ -16,10 +16,12 @@ class MailAttachedHandler < ActiveRecord::Base
     p 'IMAP SELECT INDEX'
     imap.uid_search(["SEEN"]).each do |uid| # 未読を対象
       email = TMail::Mail.parse(imap.uid_fetch(uid,'RFC822').first.attr['RFC822'])
-      p email.to
+      p email.to[0]
+      p email.from[0]
+      p email.date
       p email.subject.toutf8
 
-#      Photo.save_image(email)
+      Photo.save_image(email)
 #      imap.store(uid,"+FLAGS",[:Seen])    #make read
       #imap.store(uid,'+FLAGS',[:Deleted]) #delete mail  
 #      imap.expunge # :Deleted フラグを確定する
