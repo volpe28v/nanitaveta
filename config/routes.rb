@@ -1,20 +1,12 @@
 Nanitaveta::Application.routes.draw do
-  get "photos/index"
-
-  get "photos/show"
-
-  get "photos/destroy"
-
-  get "photos/edit"
-
-  get "photos/update"
-
   root :to => "users#index"
 
   devise_for :users
   get 'users', :to => 'users#index', :as => :user_root
 
-  resources :users
+  resources :users do
+    resources :photos
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
