@@ -7,6 +7,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="wrapper">
   <header>
     <div style="float: right; text-align: right;">
     <% if current_user %>
@@ -25,8 +26,7 @@
     <p class="alert"><%= alert %></p>
   </header>
 
-  <div id="wrapper">
-    <%= yield %>
+  <%= yield %>
   </div>
 
 </body>

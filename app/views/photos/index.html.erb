@@ -1,22 +1,20 @@
-<div class="photos">
 <% latest_date = nil %>
 <% @user.photos.order("date DESC").each do |p| %>
   <% current_date = p.date.strftime("%Y/%m/%d") %>
   <% if latest_date == nil %>
     <% latest_date = current_date %>
-    <h2><%= current_date %></h2><table><tr>
+    <div class="selector03"><%= current_date %></div><ul class="thumbnail clearFix">
   <% elsif latest_date != current_date %>
     <% latest_date = current_date %>
-    </tr></table><h2><%= current_date %></h2><table><tr>
+    </ul><div class="selector03"><%= current_date %></div><ul class="thumbnail clearFix">
   <% end %>
-  <td valign="top" width="220px">
-    <%= p.date.strftime("%H:%M") %><br>
-    <%= link_to(image_tag("/photos/" + p.path, :width=>"100", :class => "photo", :align => "left"), user_photo_path(@user,p) ) %>
-    <%= p.message %>
-  </td>
+  <li><dl>
+    <dt><%= link_to(image_tag("/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
+    <dd><strong><%= p.date.strftime("%H:%M") %></strong><br>
+    <%= p.message %></dd>
+  </dl></li>
 <% end %>
-</tr></table>
-</div>
+</ul>
 
 <script>
   $(document).ready(function(){

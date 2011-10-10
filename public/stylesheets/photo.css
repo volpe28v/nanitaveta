@@ -1,8 +1,67 @@
-.photos img {
-  margin-right: 4px;
-  margin-left: 4px;
-  padding: 3px; /* 画像のパディング */
-  background-color: #8B4513; /* 画像の背景色 */
-  border: 1px solid; /* 画像の境界線 */
-  border-color: #c0c0c0 #808080 #808080 #c0c0c0; /* 画像の境界線色（上右下左） */
+#wrapper {
+  width: 94%;
+  margin:auto;
+}
+
+.selector03{  
+  border-left:7px solid #ccc;  
+  border-bottom:1px dashed #ccc;  
+  padding:.3em .4em .1em; 
+  font: bold 20px 'arial', sans-serif;
+}  
+
+/* --- リストエリア --- */
+ul.thumbnail {
+width: 100%; /* リストエリアの幅 */
+margin: 0;
+padding: 6px 0 10px; /* リストエリアのパディング（上、左右、下） */
+list-style-type: none;
+}
+
+/* --- リスト項目 --- */
+ul.thumbnail li {
+width: 150px; /* 項目の幅 */
+float: left;
+}
+
+/* --- 項目内容 --- */
+ul.thumbnail dl {
+width: 142px; /* 内容の幅 */
+margin: 0 auto; /* 内容のセンタリング */
+font-size: 80%;
+}
+
+/* --- 写真エリア --- */
+ul.thumbnail dt {
+/* height: 102px; */ /* 写真エリアの高さ（dt要素の高さを指定する場合） */
+margin-bottom: 5px; /* 写真エリアの下マージン */
+}
+ul.thumbnail dt img {
+border: 2px #808080 solid; /* 写真の境界線 */
+}
+
+/* --- キャプションエリア --- */
+ul.thumbnail dd {
+margin: 0 0 3px; /* キャプションエリアのマージン（上、左右、下） */
+//height: 6.5em; /* キャプションエリアの高さ */
+line-height: 120%;
+}
+
+ul.thumbnail dd strong{
+  color: #888;
+
+
+}
+
+/* --- clearfix --- */
+.clearFix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+
+.clearFix {
+min-height: 1px;
 }
