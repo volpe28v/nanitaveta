@@ -1,7 +1,6 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-
 function sync_now( url, to_path ){
   $("#sync_auto_loader").show();
   $.ajax({
@@ -13,7 +12,7 @@ function sync_now( url, to_path ){
        if (result == "OK"){
          location.href = to_path;
        }
-       setTimeout("sync_now()",1000 * 30);
+       setTimeout('sync_now("' + url + '","' + to_path + '")',1000 * 60);
      }
   });
 }
