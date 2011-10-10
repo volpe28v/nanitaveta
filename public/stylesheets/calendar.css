@@ -1,0 +1,30 @@
+.calendar {
+  border: 1,
+  border-color: #808080,
+}
+
+.cal_title {
+  background-color: #7fffd4
+}
+
+.sunday_title{
+  background-color: #fa8072
+}
+
+.otherday_title{
+  background-color: #ffebcd
+}
+
+.sunday {
+  background-color: #ffb6c1
+}
+
+.today {
+  background-color: #00ffff
+}
+
+.otherday{
+  background-color: #ffffe0
+}
+
+

@@ -8,6 +8,7 @@ Nanitaveta::Application.routes.draw do
     get 'sync'
     get 'sync_now'
     resources :photos do
+      get 'calendar', :on => :collection
     end
   end
 

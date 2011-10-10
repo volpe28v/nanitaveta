@@ -32,4 +32,7 @@ class PhotosController < ApplicationController
     redirect_to user_photo_path(user,photo)
   end
 
+  def calendar
+  end
+
 end
