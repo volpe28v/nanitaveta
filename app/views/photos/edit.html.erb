@@ -1,2 +1,7 @@
-<h1>Photos#edit</h1>
-<p>Find me in app/views/photos/edit.html.erb</p>
+<h2><%= @photo.date.strftime("%Y/%m/%d %H:%M") %></h2>
+<%= image_tag('/photos/' + @photo.path, :align => "top") %>
+<%= form_for @photo , :url => user_photo_path(@user,@photo) do |f| %>
+  <%= f.text_field :message , :size => 60 %><br>
+  <%= f.submit %>
+<% end %>
+

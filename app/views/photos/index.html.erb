@@ -1,2 +1,17 @@
-<h1>Photos#index</h1>
-<p>Find me in app/views/photos/index.html.erb</p>
+<% latest_date = nil %>
+<% @user.photos.order("date DESC").each do |p| %>
+  <% current_date = p.date.strftime("%Y/%m/%d") %>
+  <% if latest_date == nil %>
+    <% latest_date = current_date %>
+    <h2><%= current_date %></h2><table><tr>
+  <% elsif latest_date != current_date %>
+    <% latest_date = current_date %>
+    </tr></table><h2><%= current_date %></h2><table><tr>
+  <% end %>
+  <td valign="top" width="220px">
+    <%= p.date.strftime("%H:%M") %><br>
+    <%= link_to(image_tag("/photos/" + p.path, :width=>"100", :class => "photo", :align => "left"), user_photo_path(@user,p) ) %>
+    <%= p.message %>
+  </td>
+<% end %>
+</tr></table>

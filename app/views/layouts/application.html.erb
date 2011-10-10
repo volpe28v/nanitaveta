@@ -7,9 +7,25 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
+  <header>
+    <div style="float: right; text-align: right;">
+    <% if current_user %>
+        <span style="float: right;font-weight: bold;"><%= "<" + current_user.email + ">" %></span><br>
+        <%= link_to('ログアウト', [ :destroy, :user_session ], :method => :delete ,:class => 'sign signOut') %>
+    <% else %>
+      <%= link_to 'ログイン', [ :new, :user_session ]  %><br>
+      <%= link_to 'ユーザー登録', [ :new, :user_registration ]  %>
+    <% end %>
+    </div>
+
+    <h1>なにたべ？</h1>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </header>
+
+  <div id="wrapper">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

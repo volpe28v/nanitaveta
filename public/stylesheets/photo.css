@@ -1,3 +1,11 @@
 .photo{
-  padding: 5px;
+}
+
+img {
+  margin-right: 4px;
+  margin-left: 4px;
+  padding: 4px; /* 画像のパディング */
+  background-color: #8B4513; /* 画像の背景色 */
+  border: 1px solid; /* 画像の境界線 */
+  border-color: #c0c0c0 #808080 #808080 #c0c0c0; /* 画像の境界線色（上右下左） */
 }
