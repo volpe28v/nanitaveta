@@ -5,7 +5,10 @@ Nanitaveta::Application.routes.draw do
   get 'users', :to => 'users#index', :as => :user_root
 
   resources :users do
-    resources :photos
+    get 'sync'
+    get 'sync_now'
+    resources :photos do
+    end
   end
 
   # The priority is based upon order of creation:

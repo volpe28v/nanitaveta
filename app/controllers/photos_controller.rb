@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
     @photo.destroy
     File.delete(Rails.root + "public/photos/" + @photo.path)
 
-    redirect_to @user
+    render :action => 'index'
   end
 
   def edit
