@@ -13,7 +13,10 @@ class MailAttachedHandler < ActiveRecord::Base
 
     # 受信箱を開く
     imap.select('INBOX')
+    is_exist_new_mail = false
     imap.uid_search(["UNSEEN"]).each do |uid| # 未読を対象
+      is_exist_new_mail = true
+
       email = TMail::Mail.parse(imap.uid_fetch(uid,'RFC822').first.attr['RFC822'])
       p "got email from: " + email.from[0]
 
@@ -26,5 +29,6 @@ class MailAttachedHandler < ActiveRecord::Base
     imap.logout
 
     p "all email downloaded!"
+    return is_exist_new_mail
   end
 end

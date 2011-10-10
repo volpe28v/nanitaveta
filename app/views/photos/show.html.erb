@@ -1,8 +1,10 @@
 <%= link_to 'リストへ', user_photos_path(@user) %>
 
+<div class="photos">
 <h2><%= @photo.date.strftime("%Y/%m/%d %H:%M") %></h2>
 <%= image_tag('/photos/' + @photo.path, :align => "top") %>
 <%= @photo.message %>
+</div>
 
 </br>
 <%= link_to 'コメントを編集', edit_user_photo_path(@user,@photo) %>

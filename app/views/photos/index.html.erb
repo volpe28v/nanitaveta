@@ -1,3 +1,4 @@
+<div class="photos">
 <% latest_date = nil %>
 <% @user.photos.order("date DESC").each do |p| %>
   <% current_date = p.date.strftime("%Y/%m/%d") %>
@@ -15,3 +16,10 @@
   </td>
 <% end %>
 </tr></table>
+</div>
+
+<script>
+  $(document).ready(function(){
+    sync_now("<%= user_sync_now_path %>", "<%= user_photos_path %>");
+  });
+</script>

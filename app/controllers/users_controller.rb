@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def sync
-  end
-
   def sync_now
-    MailAttachedHandler.download_imap
-    render :text => "sync completed";
+    if MailAttachedHandler.download_imap
+      render :text => "OK"
+    else
+      render :text => "NONE"
+    end
   end
 end
