@@ -6,13 +6,17 @@ class Photo < ActiveRecord::Base
 
   def self.save_image(email)
     user = nil
-    if (user = User.find_by_email(email.from[0])) != nil
-      self.create_photo_table(email,user,self.create_photo_name(user,email))
-
-      if email.has_attachments?
-        self.create_image_original(email.attachments[0],self.create_photo_name(user,email))
-      end
+    if (user = User.find_by_email(email.from[0])) == nil
+      return false
     end
+
+    if email.has_attachments?
+      self.create_image_original(email.attachments[0],self.create_photo_name(user,email))
+      self.create_photo_table(email,user,self.create_photo_name(user,email))
+    else
+      return false
+    end
+    true
   end
 
   def self.create_photo_name(user,email)
@@ -23,12 +27,18 @@ class Photo < ActiveRecord::Base
     photo = Photo.new
     photo.user_id  = user.id
     photo.path = photo_name
-    photo.date = email.date
+    photo.date = self.get_image_date(photo_name)
     photo.message = email.body.split("\r\n")[0].toutf8
     photo.save
   end
 
   def self.create_image_original(file,photo_name)
     File.open("#{OPEN_PROFILE_IMAGE_PATH}#{photo_name}", "w+b"){ |f| f.write(file.read) }
+  end
+
+  def self.get_image_date(photo_name)
+    img = EXIFR::JPEG.new("#{OPEN_PROFILE_IMAGE_PATH}#{photo_name}")
+    p img.date_time
+    return img.date_time
   end
 end

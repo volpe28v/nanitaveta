@@ -1,11 +1,20 @@
 <%= link_to 'リストへ', user_photos_path(@user) %>
 
-<div class="photos">
 <h2><%= @photo.date.strftime("%Y/%m/%d %H:%M") %></h2>
-<%= image_tag('/photos/' + @photo.path, :align => "top") %>
-<%= @photo.message %>
-</div>
 
+<div class="photo">
+<%= image_tag('/photos/' + @photo.path, :align => "left") %>
+</div>
+<%= raw(@photo.message.gsub("\n","<br>")) %>
+
+</br>
 </br>
 <%= link_to 'コメントを編集', edit_user_photo_path(@user,@photo) %>
 <%= link_to '削除', user_photo_path(@user,@photo), :method => :delete , :confirm => "本当に削除しますか？"%>
+</br>
+</br>
+</br>
+</br>
+<%= link_to '前へ' ,user_photo_path(@user,@pre) %>
+<%= link_to '次へ' ,user_photo_path(@user,@next) %>
+

@@ -43,14 +43,11 @@ border: 2px #808080 solid; /* 写真の境界線 */
 /* --- キャプションエリア --- */
 ul.thumbnail dd {
 margin: 0 0 3px; /* キャプションエリアのマージン（上、左右、下） */
-//height: 6.5em; /* キャプションエリアの高さ */
 line-height: 120%;
 }
 
 ul.thumbnail dd strong{
   color: #888;
-
-
 }
 
 /* --- clearfix --- */
@@ -65,3 +62,9 @@ visibility: hidden;
 .clearFix {
 min-height: 1px;
 }
+
+.photo img {
+border: 2px #808080 solid; /* 写真の境界線 */
+margin-right: 5px; 
+}
+

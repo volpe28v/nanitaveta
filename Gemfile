@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'tmail'
 gem 'devise'
 gem 'jquery-rails'
+gem 'exifr'
 
 
 group :development, :test do

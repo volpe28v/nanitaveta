@@ -1,7 +1,11 @@
 <h2><%= @photo.date.strftime("%Y/%m/%d %H:%M") %></h2>
-<%= image_tag('/photos/' + @photo.path, :align => "top") %>
+
+<div class="photo">
+<%= image_tag('/photos/' + @photo.path, :align => "left") %>
+</div>
+
 <%= form_for @photo , :url => user_photo_path(@user,@photo) do |f| %>
-  <%= f.text_field :message , :size => 60 %><br>
+  <%= f.text_area :message , :size => 60 %><br>
   <%= f.submit %>
 <% end %>
 
