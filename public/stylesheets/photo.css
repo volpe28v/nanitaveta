@@ -46,7 +46,7 @@ margin: 0 0 3px; /* キャプションエリアのマージン（上、左右、
 line-height: 120%;
 }
 
-ul.thumbnail dd strong{
+ul.thumbnail dt strong{
   color: #888;
 }
 
@@ -115,7 +115,7 @@ margin: 0 0 3px; /* キャプションエリアのマージン（上、左右、
 line-height: 120%;
 }
 
-ul.pre_next dd strong{
+ul.pre_next dt strong{
   color: #888;
 }
 

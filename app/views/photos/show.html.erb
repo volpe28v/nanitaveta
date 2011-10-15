@@ -23,8 +23,7 @@ $(function() {
 <ul class="pre_next clearFix">
   <% @pre_next.each do |p| %>
   <li><dl>
-    <dt><%= link_to(image_tag("/photos/" + p[:photo].path, :width=>"90" ), user_photo_path(@user,p[:photo]) ) %></dt>
-    <dd><strong><%= p[:date].empty? ? p[:photo].date.strftime("%H:%M") : p[:date] %></strong><dd>
+    <dt><strong><%= p[:date].empty? ? p[:photo].date.strftime("%H:%M") : p[:date] %></br><%= link_to(image_tag("/photos/" + p[:photo].path, :width=>"90" ), user_photo_path(@user,p[:photo]) ) %></dt>
   </dl></li>
   <% end %>
 </ul>

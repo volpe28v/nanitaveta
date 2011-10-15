@@ -13,9 +13,9 @@ $(function() {
   <ul class="thumbnail clearFix">
     <% photos.each do |p| %>
       <li><dl>
-        <dt><%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
-        <dd><strong><%= p.date.strftime("%H:%M") %></strong><br>
-        <%= p.message %></dd>
+        <dt><strong><%= p.date.strftime("%H:%M") %></strong><br>
+          <%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
+        <dd><%= p.message %></dd>
       </dl></li>
     <% end %>
   </ul>
