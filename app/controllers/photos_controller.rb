@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
       end
     end
     @pre  = photos[found_i - 1]
-    @next = photos[found_i + 1]
+    @next = photos[found_i] == photos.last ? photos.first : photos[found_i + 1]
   end
 
   def destroy

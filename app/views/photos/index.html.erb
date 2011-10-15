@@ -1,3 +1,12 @@
+<script>
+$(function() {
+  $("img").lazyload({
+    placeholder : "images/grey.gif",
+    effect : "fadeIn"
+  });
+});
+</script>
+
 <%= link_to 'カレンダー', calendar_user_photos_path(@user) %>
 <% latest_date = nil %>
 <% @user.photos.order("date DESC").each do |p| %>
