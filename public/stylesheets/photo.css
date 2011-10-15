@@ -79,3 +79,43 @@ width:250px;
 height:30%;
 }
 
+/* --- 次、前 --- */
+ul.pre_next {
+width: 100%; /* リストエリアの幅 */
+margin: 0;
+padding: 6px 0 10px; /* リストエリアのパディング（上、左右、下） */
+list-style-type: none;
+}
+
+/* --- リスト項目 --- */
+ul.pre_next li {
+width: 100px; /* 項目の幅 */
+float: left;
+}
+
+/* --- 項目内容 --- */
+ul.pre_next dl {
+width: 90px; /* 内容の幅 */
+margin: 0 auto; /* 内容のセンタリング */
+font-size: 80%;
+}
+
+/* --- 写真エリア --- */
+ul.pre_next dt {
+/* height: 102px; */ /* 写真エリアの高さ（dt要素の高さを指定する場合） */
+margin-bottom: 5px; /* 写真エリアの下マージン */
+}
+ul.pre_next dt img {
+border: 2px #808080 solid; /* 写真の境界線 */
+}
+
+/* --- キャプションエリア --- */
+ul.pre_next dd {
+margin: 0 0 3px; /* キャプションエリアのマージン（上、左右、下） */
+line-height: 120%;
+}
+
+ul.pre_next dd strong{
+  color: #888;
+}
+

@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @user = User.find(params[:user_id])
 
-    photos = @user.photos.order("date DESC")
+    photos = @user.photos.order("date ASC")
     found_i = 0
     photos.each_with_index do |p,i|
       if p == @photo
@@ -23,8 +23,16 @@ class PhotosController < ApplicationController
         break
       end
     end
-    @pre  = photos[found_i - 1]
-    @next = photos[found_i] == photos.last ? photos.first : photos[found_i + 1]
+    pre_photo  = photos[found_i - 1]
+    next_photo = photos[found_i] == photos.last ? photos.first : photos[found_i + 1]
+
+    current_date = @photo.date.strftime("%Y/%m/%d")
+    pre_date     = pre_photo.date.strftime("%Y/%m/%d")
+    next_date    = next_photo.date.strftime("%Y/%m/%d")
+
+    @pre_next = []
+    @pre_next << {:photo => pre_photo, :date => current_date == pre_date ? "" : pre_date }
+    @pre_next << {:photo => next_photo, :date => current_date == next_date ? "" : next_date }
   end
 
   def destroy

@@ -20,5 +20,11 @@ $(function() {
 </ul>
 </div>
 
-<%= link_to(image_tag("/photos/" + @pre.path, :width=>"100" ), user_photo_path(@user,@pre) ) %>
-<%= link_to(image_tag("/photos/" + @next.path, :width=>"100" ), user_photo_path(@user,@next) ) %>
+<ul class="pre_next clearFix">
+  <% @pre_next.each do |p| %>
+  <li><dl>
+    <dt><%= link_to(image_tag("/photos/" + p[:photo].path, :width=>"90" ), user_photo_path(@user,p[:photo]) ) %></dt>
+    <dd><strong><%= p[:date].empty? ? p[:photo].date.strftime("%H:%M") : p[:date] %></strong><dd>
+  </dl></li>
+  <% end %>
+</ul>
