@@ -1,7 +1,7 @@
 <script>
 $(function() {
   $("img").lazyload({
-    placeholder : "images/grey.gif",
+    placeholder : "<%= image_path('grey.gif') %>", 
     effect : "fadeIn"
   });
 });
@@ -19,7 +19,7 @@ $(function() {
     </ul><div class="selector03"><%= current_date %></div><ul class="thumbnail clearFix">
   <% end %>
   <li><dl>
-    <dt><%= link_to(image_tag("/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
+    <dt><%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
     <dd><strong><%= p.date.strftime("%H:%M") %></strong><br>
     <%= p.message %></dd>
   </dl></li>

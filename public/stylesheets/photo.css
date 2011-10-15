@@ -66,5 +66,16 @@ min-height: 1px;
 .photo img {
 border: 2px #808080 solid; /* 写真の境界線 */
 margin-right: 5px; 
+margin-bottom: 5px; 
+}
+
+.menu ul li{
+margin-left:5px;
+list-style-type: none;
+}
+
+.message_edit_area {
+width:250px;
+height:30%;
 }
 
