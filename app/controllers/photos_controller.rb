@@ -1,6 +1,14 @@
 class PhotosController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+
+    @photos_hash = {}
+    @user.photos.order("date ASC").each do |p|
+      current_date = p.date.strftime("%Y/%m/%d")
+      @photos_hash[current_date] ||= []
+      @photos_hash[current_date] << p
+    end
+
   end
 
   def show

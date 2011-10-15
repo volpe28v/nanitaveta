@@ -7,25 +7,20 @@ $(function() {
 });
 </script>
 
-<%= link_to 'カレンダー', calendar_user_photos_path(@user) %>
-<% latest_date = nil %>
-<% @user.photos.order("date DESC").each do |p| %>
-  <% current_date = p.date.strftime("%Y/%m/%d") %>
-  <% if latest_date == nil %>
-    <% latest_date = current_date %>
-    <div class="selector03"><%= current_date %></div><ul class="thumbnail clearFix">
-  <% elsif latest_date != current_date %>
-    <% latest_date = current_date %>
-    </ul><div class="selector03"><%= current_date %></div><ul class="thumbnail clearFix">
-  <% end %>
-  <li><dl>
-    <dt><%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
-    <dd><strong><%= p.date.strftime("%H:%M") %></strong><br>
-    <%= p.message %></dd>
-  </dl></li>
+<%#= link_to 'カレンダー', calendar_user_photos_path(@user) %>
+<% @photos_hash.sort{|a,b| b[0] <=> a[0] }.each do |date,photos| %>
+  <div class="selector03"><%= date %></div>
+  <ul class="thumbnail clearFix">
+    <% photos.each do |p| %>
+      <li><dl>
+        <dt><%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
+        <dd><strong><%= p.date.strftime("%H:%M") %></strong><br>
+        <%= p.message %></dd>
+      </dl></li>
+    <% end %>
+  </ul>
 <% end %>
-</ul>
-
+    
 <script>
   $(document).ready(function(){
     sync_now("<%= user_sync_now_path %>", "<%= user_photos_path %>");
