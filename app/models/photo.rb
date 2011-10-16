@@ -1,3 +1,5 @@
+# coding : UTF-8
+
 class Photo < ActiveRecord::Base
   belongs_to(:user)
   validates_presence_of :user_id
@@ -44,7 +46,10 @@ class Photo < ActiveRecord::Base
 
 
   def price
-    /(\d+)円/ =~ self.message
-    $1 ? $1.to_i : 0
+    if /(\d+)円/ =~ self.message
+      $1 ? $1.to_i : 0
+    else
+      0
+    end
   end
 end
