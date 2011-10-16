@@ -5,10 +5,15 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
 
     @photos_hash = {}
+    @price_hash = {}
     @user.photos.order("date ASC").each do |p|
       current_date = p.date.strftime("%Y/%m/%d")
       @photos_hash[current_date] ||= []
       @photos_hash[current_date] << p
+
+      current_month = p.date.strftime("%Y/%m")
+      @price_hash[current_month] ||= 0
+      @price_hash[current_month] += p.price
     end
 
   end

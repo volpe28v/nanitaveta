@@ -41,4 +41,10 @@ class Photo < ActiveRecord::Base
     p img.date_time
     return img.date_time
   end
+
+
+  def price
+    /(\d+)円/ =~ self.message
+    $1 ? $1.to_i : 0
+  end
 end

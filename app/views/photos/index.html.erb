@@ -7,7 +7,17 @@ $(function() {
 });
 </script>
 
+<div class="cost_list">
+  <table>
+    <tr><th>年月</th><th>外食費</th></tr>
+<% @price_hash.sort{|a,b| b[0] <=> a[0] }.each do |month,price| %>
+    <tr><td><%= month %></td><td align="right"><%= price %></td></tr>
+<% end %>
+  </table>
+</div>
+
 <%#= link_to 'カレンダー', calendar_user_photos_path(@user) %>
+<div class="photo_list">
 <% @photos_hash.sort{|a,b| b[0] <=> a[0] }.each do |date,photos| %>
   <div class="selector03"><%= date %></div>
   <ul class="thumbnail clearFix">
@@ -20,6 +30,7 @@ $(function() {
     <% end %>
   </ul>
 <% end %>
+</div>
     
 <script>
   $(document).ready(function(){
