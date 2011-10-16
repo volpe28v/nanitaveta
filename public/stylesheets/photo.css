@@ -42,13 +42,13 @@ list-style-type: none;
 
 /* --- リスト項目 --- */
 ul.thumbnail li {
-width: 150px; /* 項目の幅 */
+width: 140px; /* 項目の幅 */
 float: left;
 }
 
 /* --- 項目内容 --- */
 ul.thumbnail dl {
-width: 142px; /* 内容の幅 */
+width: 130px; /* 内容の幅 */
 margin: 0 auto; /* 内容のセンタリング */
 font-size: 80%;
 }
