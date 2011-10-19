@@ -14,7 +14,7 @@
     margin-bottom: 30px;
 }
 .cost_list th, .cost_list td  {
-    padding: 6px 12px;
+    padding: 4px 12px 0px 12px;
     color: #1D5C79;
 }
 .cost_list th {
