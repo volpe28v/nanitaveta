@@ -7,10 +7,8 @@ class Photo < ActiveRecord::Base
   OPEN_PROFILE_IMAGE_PATH = Rails.root + "public/photos/"
 
   def self.save_image(email)
-    user = nil
-    if (user = User.find_by_email(email.from[0])) == nil
-      return false
-    end
+    user = ""
+    return false if (user = User.find_by_email(email.from[0])) == nil
 
     if email.has_attachments?
       self.create_image_original(email.attachments[0],self.create_photo_name(user,email))
@@ -30,7 +28,7 @@ class Photo < ActiveRecord::Base
     photo.user_id  = user.id
     photo.path = photo_name
     photo.date = self.get_image_date(photo_name)
-    photo.message = email.body.split("\r\n")[0].toutf8
+    photo.message = email.body.split("\r\n")[0..-2].join("\n").toutf8
     photo.save
   end
 
