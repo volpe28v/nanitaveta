@@ -15,7 +15,19 @@ class PhotosController < ApplicationController
       @price_hash[current_month] ||= 0
       @price_hash[current_month] += p.price
     end
+  end
 
+  def dinner
+    @user = User.find(params[:user_id])
+
+    @photos_hash = {}
+    @user.photos.week.order("date ASC").each do |p|
+      if p.is_dinner?
+        current_date = p.date.strftime("%Y/%m/%d")
+        @photos_hash[current_date] ||= []
+        @photos_hash[current_date] << p
+      end
+    end
   end
 
   def show

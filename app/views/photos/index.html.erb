@@ -16,7 +16,7 @@ $(function() {
   </table>
 </div>
 
-<%#= link_to 'カレンダー', calendar_user_photos_path(@user) %>
+<%= link_to '一週間の夕食', dinner_user_photos_path(@user) %>
 <div class="photo_list">
 <% @photos_hash.sort{|a,b| b[0] <=> a[0] }.each do |date,photos| %>
   <div class="selector03"><%= date %></div>

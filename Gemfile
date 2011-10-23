@@ -7,6 +7,7 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 gem 'tmail'
+gem 'mail'
 gem 'devise'
 gem 'jquery-rails'
 gem 'exifr'

@@ -116,6 +116,7 @@ DEPENDENCIES
   growl
   guard
   jquery-rails
+  mail
   rails (= 3.0.7)
   rcov
   rspec

@@ -1,0 +1,28 @@
+<script>
+$(function() {
+  $(".photo_list img").lazyload({
+    placeholder : "<%= image_path('grey.gif') %>", 
+    effect : "fadeIn"
+  });
+});
+</script>
+
+<%= link_to 'Top', user_photos_path(@user) %>
+  <ul class="thumbnail clearFix">
+    <% @photos_hash.sort{|a,b| a[0] <=> b[0] }.each do |date,photos| %>
+      <li>
+      <table>
+        <tr><div class="selector03"><%= date.split("/")[1..2].join("/") %></div></tr>
+        <% photos.each do |p| %>
+          <tr>
+            <dl>
+              <dt><strong><%= p.date.strftime("%H:%M") %></strong><br>
+                <%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
+               <dd><%#= p.message %></dd>
+            </dl>
+          </tr>
+        <% end %>
+      </table>
+      </li>
+    <% end %>
+  </ul>

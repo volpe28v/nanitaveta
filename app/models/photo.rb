@@ -47,4 +47,10 @@ class Photo < ActiveRecord::Base
     /(\d+)円/ =~ self.message
     $1 ? $1.to_i : 0
   end
+
+  def is_dinner?
+    self.date > Time.local(self.date.year, self.date.month, self.date.day, 18, 00)
+  end
+
+  scope :week, where('date > ?', 7.days.ago)
 end
