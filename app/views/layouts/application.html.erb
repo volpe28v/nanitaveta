@@ -25,6 +25,14 @@
     <h1>なにたべ？</h1>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+
+<%= link_to '一覧', user_photos_path(@user) %>
+| 
+<%= link_to '一週間の朝食', breakfast_user_photos_path(@user) %>
+| 
+<%= link_to '一週間の夕食', dinner_user_photos_path(@user) %>
+
   </header>
 
   <%= yield %>

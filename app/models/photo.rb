@@ -52,5 +52,13 @@ class Photo < ActiveRecord::Base
     self.date > Time.local(self.date.year, self.date.month, self.date.day, 18, 00)
   end
 
-  scope :week, where('date > ?', 7.days.ago)
+  def is_breakfast?
+    if self.date >= Time.local(self.date.year, self.date.month, self.date.day, 6, 00) and self.date < Time.local(self.date.year, self.date.month, self.date.day, 11, 00)
+      true
+    else
+      false
+    end
+  end
+
+  scope :week, where('date > ?', Date.today - 6)
 end

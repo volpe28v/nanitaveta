@@ -10,6 +10,7 @@ Nanitaveta::Application.routes.draw do
     resources :photos do
       get 'calendar', :on => :collection
       get 'dinner', :on => :collection
+      get 'breakfast', :on => :collection
     end
   end
 

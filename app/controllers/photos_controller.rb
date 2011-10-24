@@ -20,7 +20,7 @@ class PhotosController < ApplicationController
   def dinner
     @user = User.find(params[:user_id])
 
-    @photos_hash = {}
+    @photos_hash = new_base_photos_hash
     @user.photos.week.order("date ASC").each do |p|
       if p.is_dinner?
         current_date = p.date.strftime("%Y/%m/%d")
@@ -28,6 +28,32 @@ class PhotosController < ApplicationController
         @photos_hash[current_date] << p
       end
     end
+  end
+
+  def breakfast
+    @user = User.find(params[:user_id])
+
+    @photos_hash = new_base_photos_hash
+    @user.photos.week.order("date ASC").each do |p|
+      if p.is_breakfast?
+        current_date = p.date.strftime("%Y/%m/%d")
+        @photos_hash[current_date] ||= []
+        @photos_hash[current_date] << p
+      end
+    end
+  end
+
+  def new_base_photos_hash
+    photos_hash = {}
+    today = Date.today
+    index_date = today - 6
+    while index_date <= today
+      current_date = index_date.strftime("%Y/%m/%d")
+      photos_hash[current_date] ||= []
+      index_date += 1
+    end
+
+    photos_hash
   end
 
   def show
