@@ -107,4 +107,9 @@ class PhotosController < ApplicationController
   def calendar
   end
 
+  def gallery
+    @user = User.find(params[:user_id])
+    @photos = @user.photos.order("date DESC").limit(100)
+
+  end
 end

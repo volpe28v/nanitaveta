@@ -1,0 +1,37 @@
+<script>
+$(function() {
+  $("#thumbnailList img").MyThumbnail({
+    thumbWidth:100,
+    thumbHeight:100,
+    backgroundColor:"#ccc",
+    imageDivClass:"myPic"
+  });
+});
+</script>
+
+<style type="text/css">
+#thumbnailList p {
+    position: absolute;
+    margin: 0px;
+    margin-left: 2px;
+    margin-top: 71px;
+    z-index:2;
+    background-Color: #555555;
+    color: #ffffff;
+    width: 80px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    opacity:.8;
+    display: none;
+    clear: none;
+    font-size: 10pt;
+}
+</style>
+
+<div id='thumbnailList'>
+<% @photos.each do |p| %>
+<%= link_to(raw('<p>hello</p>') + image_tag( "/photos/" + p.path ), user_photo_path(@user,p) ) %>
+<% end %>
+</div>
+

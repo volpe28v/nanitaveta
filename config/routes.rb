@@ -11,6 +11,7 @@ Nanitaveta::Application.routes.draw do
       get 'calendar', :on => :collection
       get 'dinner', :on => :collection
       get 'breakfast', :on => :collection
+      get 'gallery', :on => :collection
     end
   end
 
