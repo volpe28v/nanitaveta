@@ -7,15 +7,6 @@ $(function() {
 });
 </script>
 
-<div class="cost_list">
-  <table>
-    <tr><th>年月</th><th>外食費</th></tr>
-<% @price_hash.sort{|a,b| b[0] <=> a[0] }.each do |month,price| %>
-    <tr><td><%= month %></td><td align="right"><%= price %></td></tr>
-<% end %>
-  </table>
-</div>
-
 <div class="photo_list">
 <% @photos_hash.sort{|a,b| b[0] <=> a[0] }.each do |date,photos| %>
   <div class="selector03"><%= date %></div>
@@ -31,6 +22,16 @@ $(function() {
 <% end %>
 </div>
     
+<div class="cost_list">
+  <table>
+    <tr><th>年月</th><th>外食費</th></tr>
+<% @price_hash.sort{|a,b| b[0] <=> a[0] }.each do |month,price| %>
+    <tr><td><%= month %></td><td align="right"><%= price %></td></tr>
+<% end %>
+  </table>
+</div>
+
+
 <script>
   $(document).ready(function(){
     sync_now("<%= user_sync_now_path %>", "<%= user_photos_path %>");

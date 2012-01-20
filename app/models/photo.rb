@@ -48,6 +48,10 @@ class Photo < ActiveRecord::Base
     $1 ? $1.to_i : 0
   end
 
+  def is_eating_out?
+    self.price > 0 ? true : false
+  end
+
   def is_dinner?
     self.date > Time.local(self.date.year, self.date.month, self.date.day, 18, 00)
   end

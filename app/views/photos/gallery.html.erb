@@ -1,11 +1,20 @@
 <script>
 $(function() {
-  $("#thumbnailList img").MyThumbnail({
+  $("#thumbnailList img.eating_out").MyThumbnail({
     thumbWidth:100,
     thumbHeight:100,
     backgroundColor:"#ccc",
-    imageDivClass:"myPic"
+    imageDivClass:"eating_out"
   });
+
+  $("#thumbnailList img.eating_in").MyThumbnail({
+    thumbWidth:100,
+    thumbHeight:100,
+    backgroundColor:"#ccc",
+    imageDivClass:"eating_in"
+  });
+
+
 });
 </script>
 
@@ -31,7 +40,7 @@ $(function() {
 
 <div id='thumbnailList'>
 <% @photos.each do |p| %>
-<%= link_to(raw('<p>hello</p>') + image_tag( "/photos/" + p.path ), user_photo_path(@user,p) ) %>
+  <%= link_to( image_tag( "/photos/" + p.path, :class => p.is_eating_out? ? "eating_out" : "eating_in" ), user_photo_path(@user,p) ) %>
 <% end %>
 </div>
 
