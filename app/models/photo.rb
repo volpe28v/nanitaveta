@@ -11,16 +11,19 @@ class Photo < ActiveRecord::Base
     return false if (user = User.find_by_email(email.from[0])) == nil
 
     if email.has_attachments?
-      self.create_image_original(email.attachments[0],self.create_photo_name(user,email))
-      self.create_photo_table(email,user,self.create_photo_name(user,email))
+      email.attachments.each_with_index {|attach, i|
+        photo_name = self.create_photo_name(user,email,i)
+        self.create_image_original(attach,photo_name)
+        self.create_photo_table(email,user,photo_name)
+      }
     else
       return false
     end
     true
   end
 
-  def self.create_photo_name(user,email)
-    photo_name = "#{user.id}_#{email.date.strftime("%Y%m%d%H%M%S")}.jpg"
+  def self.create_photo_name(user,email,index)
+    photo_name = "#{user.id}_#{email.date.strftime("%Y%m%d%H%M%S_#{index}")}.jpg"
   end
 
   def self.create_photo_table(email,user,photo_name)

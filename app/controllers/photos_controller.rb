@@ -109,7 +109,7 @@ class PhotosController < ApplicationController
 
   def gallery
     @user = User.find(params[:user_id])
-    @photos = @user.photos.order("date DESC").limit(100)
+    @photos = @user.photos.order("date DESC")
 
   end
 end
