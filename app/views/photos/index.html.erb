@@ -14,7 +14,7 @@ $(function() {
     <% photos.each do |p| %>
       <li><dl>
         <dt><strong><%= p.date.strftime("%H:%M") %></strong><br>
-          <%= link_to(image_tag( "/photos/" + p.path, :width=>"120" ), user_photo_path(@user,p) ) %></dt>
+          <%= link_to(image_tag( "/photos/" + p.path, :width=>"120",:class => p.is_eating_out? ? "eating_out" : "eating_in"  ), user_photo_path(@user,p) ) %></dt>
           <dd><%= raw p.message.gsub("\n","<br>") %></dd>
       </dl></li>
     <% end %>

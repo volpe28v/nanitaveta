@@ -8,11 +8,23 @@ $(function() {
 </script>
 
 <div class="photo">
-<%= image_tag('/photos/' + @photo.path, :align => "left") %>
+<%= image_tag('/photos/' + @photo.path, :align => "left", :class => @photo.is_eating_out? ? "eating_out" : "eating_in" ) %>
 </div>
-<h2><%= @photo.date.strftime("%Y/%m/%d %H:%M") %></h2>
-<%= raw(@photo.message.gsub("\n","<br>")) %>
+
 <div class="menu">
+<h2><%= @photo.date.strftime("%Y/%m/%d %H:%M") %></h2>
+<ul class="pre_next">
+  <% @pre_next.each do |p| %>
+  <li><dl>
+    <dt><strong><%= p[:date].empty? ? p[:photo].date.strftime("%H:%M") : p[:date] %></br><%= link_to(image_tag("/photos/" + p[:photo].path, :width=>"90", :class => p[:photo].is_eating_out? ? "eating_out" : "eating_in" ), user_photo_path(@user,p[:photo])) %></dt>
+  </dl></li>
+  <% end %>
+</ul>
+
+<br clear="left">
+
+<%= raw(@photo.message.gsub("\n","<br>")) %>
+
 <ul>
   <%= content_tag 'li', link_to( 'リストへ', user_photos_path(@user)) %>
   <%= content_tag 'li', link_to( 'コメントを編集', edit_user_photo_path(@user,@photo)) %>
@@ -20,10 +32,3 @@ $(function() {
 </ul>
 </div>
 
-<ul class="pre_next clearFix">
-  <% @pre_next.each do |p| %>
-  <li><dl>
-    <dt><strong><%= p[:date].empty? ? p[:photo].date.strftime("%H:%M") : p[:date] %></br><%= link_to(image_tag("/photos/" + p[:photo].path, :width=>"90" ), user_photo_path(@user,p[:photo]) ) %></dt>
-  </dl></li>
-  <% end %>
-</ul>
